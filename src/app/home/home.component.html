@@ -1,0 +1,124 @@
+<a routerLink="/login">Login</a>
+<br>
+<a routerLink="/admin">Go to ADM</a>
+
+<div class="container container-fluid" style="margin: 10px">
+
+    <div class="row">
+    <div *ngFor="let item of publicacoes">
+        <div class="card" style="width: 250px;  margin: 5px">
+            <img class="card-img-top" src="{{item.imagem}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{item.titulo}}</h5>
+                <p class="card-text">
+                    Faça login para ler as publicações.
+                </p>
+            </div>
+            <div class="card-footer">
+                <p style="font-size: 10px">
+                    {{item.data}}
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+</div>
+
+
+<!-- MODAL DE CADASTRO -->
+<div class="modal fade" id="modalCad" role="dialog" aria-labelledby="modal" aria-hidden="true" style="background-color: rgba(36, 33, 33, 0.274)">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="assets/img/user-ico.png" style="width: 60%" class="rounded-circle shadow p-3 mb-5 bg-white mx-auto d-block">
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> 
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Nome" aria-label="nome"
+                    required pattern="[a-z A-Z]{3,50}" title="Somente letras sem caracteres especiais"
+                    [(ngModel)]="usuario.nome">
+                </div>
+
+                <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> 
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Sobrenome" aria-label="sobrenome" 
+                        required pattern="[a-z A-Z]{3,50}" title="Somente letras sem caracteres especiais"
+                        [(ngModel)]="usuario.sobrenome">
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Email" aria-label="email" required [(ngModel)]="usuario.email">
+                </div>
+
+                <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> 
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Senha" aria-label="senha" [(ngModel)]="usuario.senha">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Imagem" aria-label="imagem" [(ngModel)]="usuario.imagem">
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm" (click)="save(usuario)">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL LOGIN-->
+<div class="modal fade" id="modalLogin" role="dialog" aria-labelledby="modal" aria-hidden="true" style="background-color: rgba(36, 33, 33, 0.274)">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">              
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input type="email" class="form-control" placeholder="Email" aria-label="email" required [(ngModel)]="usuario.email">
+                    </div>
+                    <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> 
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Senha" aria-label="senha" [(ngModel)]="usuario.senha">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="logar(usuario)">Logar</button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,47 @@
+<div class="container container-fluid" style="margin-top: 50pt">
+    <div style="float: right;">
+        <button class="btn btn-info" (click)="logout()">Logout</button>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="jumbotron text-center">
+                    <h3>Editar Post</h3>
+                </div>
+                <div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-wine-bottle"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Título" aria-label="titulo" required
+                            [(ngModel)]="publicacao.titulo">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-align-justify"></i>
+                            </span>
+                        </div>
+                        <textarea type="text" id="editor1" class="form-control" rows="5"  placeholder="Texto" aria-label="texto" [(ngModel)]="publicacao.texto"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-images"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Imagem" aria-label="imagem" [(ngModel)]="publicacao.imagem">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="atualizar(publicacao)">atualizar</button>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>

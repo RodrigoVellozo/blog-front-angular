@@ -1,0 +1,85 @@
+<div class="container container-fluid" style="margin-top: 50pt">
+    <div style="float: right;">
+        <button  class="btn btn-info" (click)="logout()">Logout</button>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-10" >
+                    <div class="jumbotron text-center">
+                            <h3>{{nome}}  {{sobrenome}}</h3> 
+                    </div>
+                        
+
+                <div class="card" style="width: 5rem;" *ngFor="let item of publicacoes" style="align-content: center">
+                    <img class="card-img-top" src="{{item.imagem}}" >
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.titulo}}</h5>
+                        <p class="card-text">
+                            {{item.texto}}
+                        </p>
+                        <a class="btn btn-info" (click)="editar(item)"><i class="fas fa-edit"></i>Editar</a>
+                        <a class="btn btn-danger" style="margin-left: 15px" (click)="deletar(item.id)"><i class="fas fa-trash-alt"></i>Excluir</a>
+                    </div>
+                    <div class="card-footer">
+                        {{item.data}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--modal para cadastrar um post -->
+<div class="modal fade" id="modalPub" role="dialog" aria-labelledby="modal" aria-hidden="true" style="background-color: rgba(36, 33, 33, 0.274)">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">              
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-wine-bottle"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Título" aria-label="titulo" required [(ngModel)]="publicacao.titulo">
+                </div>
+                
+                <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> 
+                                <i class="fas fa-align-justify"></i>
+                            </span>
+                        </div>
+                        <textarea type="text" id="editor1" rows="5" class="form-control" placeholder="Texto" aria-label="texto" [(ngModel)]="publicacao.texto">
+                            </textarea>
+                            
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-images"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Imagem" aria-label="imagem" [(ngModel)]="publicacao.imagem">
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm" (click)="gravar(publicacao)">Postar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <router-outlet></router-outlet>
+</div>
